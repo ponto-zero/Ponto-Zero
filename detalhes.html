@@ -178,7 +178,7 @@ footer {
 
 .nota-perfil{max-width:800px;margin-top:34px;background:#17171e;border:1px solid #292930;border-radius:10px;padding:20px}.nota-perfil .linha-nota{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0}.nota-perfil select{background:#22222c;color:#fff;border:1px solid #444;border-radius:7px;padding:12px;min-width:130px}.nota-perfil button{background:#e63946;color:#fff;border:0;border-radius:7px;padding:12px 18px;font-weight:bold}.nota-publica{display:grid;gap:9px;margin-top:14px}.nota-publica article{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#22222c;border-radius:8px;padding:12px}.nota-publica a{color:#ff7b84;text-decoration:none}.nota-perfil .muted{color:#aaa}
 </style>
-<link rel="stylesheet" href="espaco.css?v=1">
+<link rel="stylesheet" href="espaco.css?v=2">
 <meta name="description" content="Sinopse, trailer, avaliações e plataformas para assistir a filmes no Ponto Zero.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://ponto-zero.github.io/Ponto-Zero/detalhes.html">
@@ -191,7 +191,7 @@ footer {
 
 <header>
     <h2 class="logo">PONTO <span>ZERO.</span></h2>
-    <nav aria-label="Navegação principal" style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px"><a href="index.html">Início</a><a href="filmes.html">Filmes</a><a href="onde-assistir.html">Onde assistir</a><a href="comunidade.html">Comunidade</a><a href="social.html">Amigos</a><a href="ajuda.html">Ajuda</a><a href="creditos.html">Créditos</a></nav></header>
+    <nav aria-label="Navegação principal" style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px"><a href="index.html">Início</a><a href="filmes.html">Filmes</a><a href="onde-assistir.html">Onde assistir</a><a href="comunidade.html">Comunidade</a><a href="social.html">Amigos</a><a href="ajuda.html">Dúvidas</a><a href="creditos.html">Créditos</a></nav></header>
 
 <main class="container">
 
@@ -213,7 +213,7 @@ footer {
             <iframe id="trailer"
                 title="Trailer do filme"
                 allowfullscreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin">
             </iframe>
         </div>
         <div id="trailerIndisponivel" style="display:none;max-width:800px;background:#17171e;border:1px solid #333;border-radius:12px;padding:22px">
@@ -271,6 +271,7 @@ footer {
         <textarea id="textoComentario" maxlength="500" placeholder="Conte o que você achou do filme..." required></textarea>
         <div class="rodape-form"><small id="contadorComentario">0/500</small><button class="botao" id="enviar" type="button">Publicar opinião</button></div>
         <p id="mensagemComentario" class="mensagem-comentario" role="status" aria-live="polite"></p>
+        <p id="loginComentario" class="mensagem-comentario" hidden><a href="comunidade.html#conta" style="color:#65d9e8;font-weight:bold">Entrar na conta para publicar</a></p>
         <h3 class="titulo-lista">Opiniões da comunidade</h3>
         <div id="listaComentarios"></div>
     </section>
@@ -286,7 +287,15 @@ footer {
 <script src="posteres.js?v=2"></script>
 <script src="catalogo-1000.js?v=1"></script>
 <script>
-const posteresExtras = Object.assign({"o-poderoso-chefao":"https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg?v=20261111","clube-da-luta":"https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg?v=20261111","forrest-gump-o-contador-de-historias":"https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg?v=20261111","pulp-fiction-tempo-de-violencia":"https://image.tmdb.org/t/p/w500/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg?v=20261111","gladiador":"https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg?v=20261111","o-senhor-dos-aneis-a-sociedade-do-anel":"https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg?v=20261111","seven-os-sete-crimes-capitais":"https://image.tmdb.org/t/p/w500/69Sns8WoET6CfaYlIkHbla4l7nC.jpg?v=20261111","vingadores-ultimato":"https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg?v=20261111","homem-aranha-sem-volta-para-casa":"https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg?v=20261111","a-lista-de-schindler":"https://image.tmdb.org/t/p/w500/c8Ass7acuOe4za6DhSattE359gr.jpg?v=20261111","o-senhor-dos-aneis-as-duas-torres":"https://image.tmdb.org/t/p/w500/5VTN0pR8gcqV3EPUj8Kx2lK.jpg?v=20261111","o-senhor-dos-aneis-o-retorno-do-rei":"https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg?v=20261111","harry-potter-e-a-pedra-filosofal":"https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg?v=20261111","harry-potter-e-o-prisioneiro-de-azkaban":"https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg?v=20261111","star-wars-uma-nova-esperanca":"https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg?v=20261111","star-wars-o-imperio-contra-ataca":"https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg?v=20261111","de-volta-para-o-futuro":"https://image.tmdb.org/t/p/w500/7lyBcpYB0Qt8gYhXYaEZUNlNQAv.jpg?v=20261111","jurassic-park-o-parque-dos-dinossauros":"https://image.tmdb.org/t/p/w500/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg?v=20261111","tubarao":"https://image.tmdb.org/t/p/w500/lxM6kqilAdpdhqUl2biYp5frCTW.jpg?v=20261111","e-t-o-extraterrestre":"https://image.tmdb.org/t/p/w500/an0n6uLhzrf5EFIWvgGi5RYp5N4.jpg?v=20261111","o-iluminado":"https://image.tmdb.org/t/p/w500/9fgh3Ns1iRzlQNYuJyK0ARQZU7w.jpg?v=20261111","psicose":"https://image.tmdb.org/t/p/w500/yz4QVqPx3h1hD1DfqqQkCq3rmxW.jpg?v=20261111","alien-o-oitavo-passageiro":"https://image.tmdb.org/t/p/w500/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg?v=20261111","o-exterminador-do-futuro":"https://image.tmdb.org/t/p/w500/qvktm0BHcnmDpul4Hz01GIazWPr.jpg?v=20261111","o-exterminador-do-futuro-2":"https://image.tmdb.org/t/p/w500/5M0j0B18abtBI5gi2RhfjjurTqb.jpg?v=20261111","mad-max-estrada-da-furia":"https://image.tmdb.org/t/p/w500/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg?v=20261111","matrix-reloaded":"https://image.tmdb.org/t/p/w500/9TGHDvWrqKBzwDxDodHYXEmOE6J.jpg?v=20261111","homem-aranha":"https://image.tmdb.org/t/p/w500/rweIrveL43TaxUN0akQEaWv6wnb.jpg?v=20261111","vingadores-guerra-infinita":"https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg?v=20261111","pantera-negra":"https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8HJdh.jpg?v=20261111","coringa":"https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg?v=20261111","homem-de-ferro":"https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg?v=20261111","viva-a-vida-e-uma-festa":"https://image.tmdb.org/t/p/w500/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg?v=20261111","toy-story":"https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg?v=20261111","ratatouille":"https://image.tmdb.org/t/p/w500/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg?v=20261111","up-altas-aventuras":"https://image.tmdb.org/t/p/w500/vpbaStTMt8qqXaEgnOR2EE4DNJk.jpg?v=20261111","wall-e":"https://image.tmdb.org/t/p/w500/hbhFnRzzg6GBPQ2L0j4e4Xg8g5Z.jpg?v=20261111","divertida-mente":"https://image.tmdb.org/t/p/w500/lRHE0vzf3oYJrhbsHXjIkF4Tl5A.jpg?v=20261111","divertida-mente-2":"https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvW6eXK7c.jpg?v=20261111","shrek":"https://image.tmdb.org/t/p/w500/iB64vpL3dIOb0RqOZb3wzd7g6Ba.jpg?v=20261111","como-treinar-o-seu-dragao":"https://image.tmdb.org/t/p/w500/ygGmAO60t8GyqUo9xYeYxSZAR3b.jpg?v=20261111","kung-fu-panda":"https://image.tmdb.org/t/p/w500/wWt4JYXTg5Wr3xBW2phBrMKgp3x.jpg?v=20261111","o-rei-leao":"https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg?v=20261111","procurando-nemo":"https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg?v=20261111","monstros-s-a":"https://image.tmdb.org/t/p/w500/sgheSKxZkttIe8ONsf2sWXPgip3.jpg?v=20261111"}, window.posterExtras || {});
+const posteresExtras = Object.assign({}, window.posterExtras || {}, {"o-poderoso-chefao":"https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg?v=20261111","clube-da-luta":"https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg?v=20261111","forrest-gump-o-contador-de-historias":"https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg?v=20261111","pulp-fiction-tempo-de-violencia":"https://image.tmdb.org/t/p/w500/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg?v=20261111","gladiador":"https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg?v=20261111","o-senhor-dos-aneis-a-sociedade-do-anel":"https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg?v=20261111","seven-os-sete-crimes-capitais":"https://image.tmdb.org/t/p/w500/69Sns8WoET6CfaYlIkHbla4l7nC.jpg?v=20261111","vingadores-ultimato":"https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg?v=20261111","homem-aranha-sem-volta-para-casa":"https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg?v=20261111","a-lista-de-schindler":"https://image.tmdb.org/t/p/w500/c8Ass7acuOe4za6DhSattE359gr.jpg?v=20261111","o-senhor-dos-aneis-as-duas-torres":"https://image.tmdb.org/t/p/w500/5VTN0pR8gcqV3EPUj8Kx2lK.jpg?v=20261111","o-senhor-dos-aneis-o-retorno-do-rei":"https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg?v=20261111","harry-potter-e-a-pedra-filosofal":"https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg?v=20261111","harry-potter-e-o-prisioneiro-de-azkaban":"https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg?v=20261111","star-wars-uma-nova-esperanca":"https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg?v=20261111","star-wars-o-imperio-contra-ataca":"https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg?v=20261111","de-volta-para-o-futuro":"https://image.tmdb.org/t/p/w500/7lyBcpYB0Qt8gYhXYaEZUNlNQAv.jpg?v=20261111","jurassic-park-o-parque-dos-dinossauros":"https://image.tmdb.org/t/p/w500/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg?v=20261111","tubarao":"https://image.tmdb.org/t/p/w500/lxM6kqilAdpdhqUl2biYp5frCTW.jpg?v=20261111","e-t-o-extraterrestre":"https://image.tmdb.org/t/p/w500/an0n6uLhzrf5EFIWvgGi5RYp5N4.jpg?v=20261111","o-iluminado":"https://image.tmdb.org/t/p/w500/9fgh3Ns1iRzlQNYuJyK0ARQZU7w.jpg?v=20261111","psicose":"https://image.tmdb.org/t/p/w500/yz4QVqPx3h1hD1DfqqQkCq3rmxW.jpg?v=20261111","alien-o-oitavo-passageiro":"https://image.tmdb.org/t/p/w500/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg?v=20261111","o-exterminador-do-futuro":"https://image.tmdb.org/t/p/w500/qvktm0BHcnmDpul4Hz01GIazWPr.jpg?v=20261111","o-exterminador-do-futuro-2":"https://image.tmdb.org/t/p/w500/5M0j0B18abtBI5gi2RhfjjurTqb.jpg?v=20261111","mad-max-estrada-da-furia":"https://image.tmdb.org/t/p/w500/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg?v=20261111","matrix-reloaded":"https://image.tmdb.org/t/p/w500/9TGHDvWrqKBzwDxDodHYXEmOE6J.jpg?v=20261111","homem-aranha":"https://image.tmdb.org/t/p/w500/rweIrveL43TaxUN0akQEaWv6wnb.jpg?v=20261111","vingadores-guerra-infinita":"https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg?v=20261111","pantera-negra":"https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8HJdh.jpg?v=20261111","coringa":"https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg?v=20261111","homem-de-ferro":"https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg?v=20261111","viva-a-vida-e-uma-festa":"https://image.tmdb.org/t/p/w500/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg?v=20261111","toy-story":"https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg?v=20261111","ratatouille":"https://image.tmdb.org/t/p/w500/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg?v=20261111","up-altas-aventuras":"https://image.tmdb.org/t/p/w500/vpbaStTMt8qqXaEgnOR2EE4DNJk.jpg?v=20261111","wall-e":"https://image.tmdb.org/t/p/w500/hbhFnRzzg6GBPQ2L0j4e4Xg8g5Z.jpg?v=20261111","divertida-mente":"https://image.tmdb.org/t/p/w500/lRHE0vzf3oYJrhbsHXjIkF4Tl5A.jpg?v=20261111","divertida-mente-2":"https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvW6eXK7c.jpg?v=20261111","shrek":"https://image.tmdb.org/t/p/w500/iB64vpL3dIOb0RqOZb3wzd7g6Ba.jpg?v=20261111","como-treinar-o-seu-dragao":"https://image.tmdb.org/t/p/w500/ygGmAO60t8GyqUo9xYeYxSZAR3b.jpg?v=20261111","kung-fu-panda":"https://image.tmdb.org/t/p/w500/wWt4JYXTg5Wr3xBW2phBrMKgp3x.jpg?v=20261111","o-rei-leao":"https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg?v=20261111","procurando-nemo":"https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg?v=20261111","monstros-s-a":"https://image.tmdb.org/t/p/w500/sgheSKxZkttIe8ONsf2sWXPgip3.jpg?v=20261111"});
+
+function normalizarTrailer(valor){
+ if(!valor)return "";
+ const texto=String(valor).trim();
+ const match=texto.match(new RegExp("(?:youtu\\\\.be/|youtube(?:-nocookie)?\\\\.com/(?:embed/|watch\\\\?v=|shorts/))([A-Za-z0-9_-]{11})","i"));
+ if(match)return match[1];
+ return /^[A-Za-z0-9_-]{11}$/.test(texto)?texto:"";
+}
 
 const filmes = {
     interestelar: {
@@ -396,8 +405,8 @@ const filmes = {
 Object.assign(filmes, Object.fromEntries((window.filmesExtras || []).map(([slug,titulo,ano,genero,duracao,diretor,sinopse])=>[slug,{titulo,ano,genero,duracao,poster:posteresExtras[slug] || "https://placehold.co/500x750/17171e/e63946?text="+encodeURIComponent(titulo),sinopse,direcao:"Direção: "+diretor,trailer:""}])));
 Object.assign(filmes, Object.fromEntries((window.catalogo1000||[]).map(f=>[f.slug,{
  titulo:f.titulo,ano:f.ano,genero:f.genero,duracao:f.duracao,
- poster:f.poster,sinopse:f.sinopse,direcao:"Direção: "+f.direcao,
- trailer:f.trailer||""
+ poster:f.poster || posteresExtras[f.slug] || "",sinopse:f.sinopse,direcao:"Direção: "+f.direcao,
+ trailer:normalizarTrailer(f.trailer)
 }])));
 
 
@@ -442,8 +451,8 @@ if (!filme) {
         etiquetas.appendChild(etiqueta);
     });
 
-    if (filme.trailer) {
-        document.getElementById("trailer").src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(filme.trailer);
+    if (normalizarTrailer(filme.trailer)) {
+        document.getElementById("trailer").src = "https://www.youtube.com/embed/" + encodeURIComponent(normalizarTrailer(filme.trailer)) + "?rel=0";
     } else {
         document.getElementById("areaTrailer").style.display = "none";
         document.getElementById("trailerIndisponivel").style.display = "block";
@@ -489,9 +498,11 @@ if (!filme) {
         apelidoUsuario=perfil?.apelido||usuario.email?.split("@")[0]||"Cinéfilo";
         campoNome.value=apelidoUsuario;
         campoNome.readOnly=true;
+        document.getElementById("loginComentario").hidden=true;
     }else{
         notaTexto.textContent="Entre na sua conta pela Comunidade para avaliar este filme.";
-        mensagem.textContent="Entre na sua conta para publicar uma opinião.";
+        mensagem.textContent="A publicação de opiniões é exclusiva para usuários conectados.";
+        document.getElementById("loginComentario").hidden=false;
         campoNome.disabled=true;
         campoTexto.disabled=true;
         botaoEnviar.disabled=true;
@@ -651,7 +662,7 @@ if (!filme) {
         }catch(error){
             mensagem.textContent=error?.message?.includes("Limite de comentários")
                 ? "Você atingiu o limite de 3 opiniões a cada 10 minutos. Aguarde um pouco."
-                : "Não foi possível publicar. Verifique sua conexão e tente novamente.";
+                : "Não foi possível publicar: "+String(error?.message||"verifique sua conexão e tente novamente.").slice(0,180);
             console.error("[Ponto Zero] Erro ao publicar comentário:",error);
         }finally{
             botaoEnviar.disabled=false;
@@ -704,6 +715,6 @@ if (!filme) {
 })();
 </script>
 
-<a class="pz-help-float" href="ajuda.html" aria-label="Abrir central de ajuda">✦ <span>Precisa de ajuda?</span></a>
+
 </body>
 </html>
