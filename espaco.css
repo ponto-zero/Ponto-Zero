@@ -19,3 +19,6 @@ footer{border-color:var(--pz-border)!important;background:rgba(7,9,20,.3)}
 .pz-help-float:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(75,100,190,.48)}
 @media(prefers-reduced-motion:reduce){body:before{animation:none}*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 
+
+/* Atalho da antiga IA de suporte desativado. */
+.pz-help-float{display:none!important}
