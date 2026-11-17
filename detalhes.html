@@ -292,14 +292,6 @@ const posteresExtras = Object.assign({}, window.posterExtras || {}, {}, window.p
 function normalizarTrailer(valor){
  if(!valor)return "";
  const texto=String(valor).trim();
- const match=texto.match(new RegExp("(?:youtu\\\\.be/|youtube(?:-nocookie)?\\\\.com/(?:embed/|watch\\\\?v=|shorts/))([A-Za-z0-9_-]{11})","i"));
- if(match)return match[1];
- return /^[A-Za-z0-9_-]{11}$/.test(texto)?texto:"";
-}
-
-function normalizarTrailer(valor){
- if(!valor)return "";
- const texto=String(valor).trim();
  const match=texto.match(new RegExp("(?:youtu\\.be/|youtube(?:-nocookie)?\\.com/(?:embed/|watch\\?v=|shorts/))([A-Za-z0-9_-]{11})","i"));
  if(match)return match[1];
  return /^[A-Za-z0-9_-]{11}$/.test(texto)?texto:"";
@@ -505,7 +497,6 @@ if (!filme) {
         apelidoUsuario=perfil?.apelido||usuario.email?.split("@")[0]||"Cinéfilo";
         campoNome.value=apelidoUsuario;
         campoNome.readOnly=true;
-        document.getElementById("loginComentario").hidden=true;
         document.getElementById("loginComentario").hidden=true;
     }else{
         notaTexto.textContent="Entre na sua conta pela Comunidade para avaliar este filme.";
